@@ -1,0 +1,31 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "Chat App using socket.io",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dixitudit/Chat-App.git"
+  },
+  "author": "Udit Narayan Dixit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dixitudit/Chat-App/issues"
+  },
+  "homepage": "https://github.com/dixitudit/Chat-App#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.3",
+    "nodemailer": "^6.9.14",
+    "otp-generator": "^4.0.1"
+  }
+}
