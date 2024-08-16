@@ -92,5 +92,47 @@ export const sendotp = async (req, res) => {
 
 // sign in
 export const signin = async (req, res) => {
-  console.log("todo");
+  try {
+    const { unameOrEmail, password } = req.body;
+    if (!unameOrEmail || !password) {
+      return res.status(403).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
+    const user = await User.findOne({
+      $or: [{ username: unameOrEmail }, { email: unameOrEmail }],
+    });
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const validPassword = await bcryptjs.compare(password, user.password);
+
+    if (!validPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Wrong Credentials",
+      });
+    }
+
+    const token = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "5d",
+      }
+    );
+    const { password: pass, ...others } = user._doc;
+
+    res.status(200).cookie("token", token).json({ user: others });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 };
