@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import "./ChatBox.css";
 import { format } from "timeago.js";
+import config from "../config";
 import InputEmoji from "react-input-emoji";
 
 const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
@@ -18,7 +19,7 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
     const userId = chat?.members?.find((id) => id !== currentUser);
     const getUserData = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/user/id/${userId}`);
+        const res = await fetch(`${config.API_URL}/user/id/${userId}`);
         const data = await res.json();
         setUserData(data);
       } catch (error) {
@@ -33,7 +34,7 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/message/${chat._id}`);
+        const res = await fetch(`${config.API_URL}/message/${chat._id}`);
         const data = await res.json();
         setMessages(data);
       } catch (error) {
@@ -62,7 +63,7 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
     setSendMessage({ ...message, receiverId });
     // send message to database
     try {
-      const res = await fetch("http://localhost:5000/message", {
+      const res = await fetch(`${config.API_URL}/message`, {
         method: "POST",
         credentials: "include",
         headers: {

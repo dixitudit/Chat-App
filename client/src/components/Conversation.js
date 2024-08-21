@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import config from "../config";
 
 const Conversation = ({ data, currentUser, online, read }) => {
   const [userData, setUserData] = useState(null);
@@ -7,7 +8,7 @@ const Conversation = ({ data, currentUser, online, read }) => {
 
     const getUserData = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/user/id/${userId}`);
+        const res = await fetch(`${config.API_URL}/user/id/${userId}`);
         const data = await res.json();
         setUserData(data);
       } catch (err) {

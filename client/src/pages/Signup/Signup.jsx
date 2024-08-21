@@ -3,6 +3,7 @@ import "./Signup.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import config from "../../config";
 import { FcCheckmark } from "react-icons/fc";
 import { RxCrossCircled } from "react-icons/rx";
 import {
@@ -44,7 +45,7 @@ const Signup = () => {
     try {
       setError(null);
       const response = await fetch(
-        `http://localhost:5000/auth/check/${formData.username}`
+        `${config.API_URL}/auth/check/${formData.username}`
       );
       const data = await response.json();
       if (response.ok) {
@@ -70,7 +71,7 @@ const Signup = () => {
     try {
       setOtpLoad(true);
       setError(null);
-      const response = await fetch("http://localhost:5000/auth/sendotp", {
+      const response = await fetch(`${config.API_URL}/auth/sendotp`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -99,7 +100,7 @@ const Signup = () => {
 
     try {
       dispatch(signInStart());
-      const response = await fetch("http://localhost:5000/auth/signup", {
+      const response = await fetch(`${config.API_URL}/auth/signup`, {
         method: "POST",
         credentials: "include",
         headers: {

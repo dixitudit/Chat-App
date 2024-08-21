@@ -10,7 +10,7 @@ import { LuLogOut } from "react-icons/lu";
 import { SlClose } from "react-icons/sl";
 import { FaSearchPlus } from "react-icons/fa";
 import { signOut } from "../../redux/userSlice";
-import { set } from "mongoose";
+import config from "../../config";
 
 const Chat = () => {
   const currentUser = useSelector((state) => state.currentUser);
@@ -83,9 +83,7 @@ const Chat = () => {
   useEffect(() => {
     const getChats = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:5000/chat/${currentUser._id}`
-        );
+        const res = await fetch(`${config.API_URL}/chat/${currentUser._id}`);
         const data = await res.json();
         setChats(data);
       } catch (err) {
@@ -117,7 +115,7 @@ const Chat = () => {
       setSearchErr("Enter Username or Email");
     }
     try {
-      const res = await fetch(`http://localhost:5000/user/find/${search}`);
+      const res = await fetch(`${config.API_URL}/user/find/${search}`);
       if (res.ok) {
         const data = await res.json();
         if (currentUser._id === data._id) {
@@ -128,7 +126,7 @@ const Chat = () => {
           senderId: currentUser._id,
           receiverId: data._id,
         });
-        const response = await fetch("http://localhost:5000/chat", {
+        const response = await fetch(`${config.API_URL}/chat`, {
           method: "POST",
           credentials: "include",
           headers: {

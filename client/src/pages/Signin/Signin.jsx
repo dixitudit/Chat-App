@@ -3,6 +3,7 @@ import "./Signin.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import config from "../../config";
 import {
   signInFailure,
   signInStart,
@@ -26,7 +27,7 @@ const Signin = () => {
     }
     try {
       dispatch(signInStart());
-      const response = await fetch("http://localhost:5000/auth/signin", {
+      const response = await fetch(`${config.API_URL}/auth/signin`, {
         method: "POST",
         credentials: "include",
         headers: {
