@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "npm i && npm i --prefix client && npm run build --prefix client",
-    "start": "concurrently \"node server/index.js\" \"node socket/index.js\"",
+    "start": "node server/index.js",
     "dev": "concurrently \"nodemon server/index.js\" \"nodemon socket/index.js\""
   },
   "repository": {
