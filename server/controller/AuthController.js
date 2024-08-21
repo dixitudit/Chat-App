@@ -4,6 +4,22 @@ import otpGenerator from "otp-generator";
 import OTP from "../models/otpModel.js";
 import jwt from "jsonwebtoken";
 
+//check username available
+export const checkUsername = async (req, res) => {
+  try {
+    const username = req.params.username;
+    const user = await User.findOne({ username: username });
+    if (user) {
+      res.status(200).json({ message: "false" });
+    } else {
+      res.status(200).json({ message: "true" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
 // register new user
 export const signup = async (req, res) => {
   const { username, password, name, email, otp } = req.body;
