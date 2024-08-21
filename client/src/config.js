@@ -3,7 +3,7 @@ const config = {
     API_URL: "http://localhost:5000",
   },
   production: {
-    API_URL: "https://chat-app-2gnu.onrender.com/",
+    API_URL: "https://chat-app-2gnu.onrender.com",
   },
 };
 
