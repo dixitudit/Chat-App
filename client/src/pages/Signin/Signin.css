@@ -1,0 +1,106 @@
+.some {
+    height: 100vh;    
+    background: linear-gradient(120deg, #a1daf1, #ffffff);
+}
+
+.form {
+    width: 100%;
+    max-width: 40%;
+    padding-bottom: 80px;
+    padding-top: 80px;
+    padding-left: 35px;
+    padding-right: 35px;
+    align-items: center;
+    margin: auto;
+    border-radius: 30px;
+    background: radial-gradient(circle, #f3ec78, #af4261);
+}
+.container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+      
+    h1 {
+        font-size: 50px;
+        background: linear-gradient(to right, #217bfe, #e55571);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+  
+        @media screen and (max-width: 1280px) {
+          font-size: 30px;
+        }
+      }
+      img{
+            width: 80px;
+            height: 80px;
+      }
+}
+
+.label {
+    font-size: 20px;
+    font-weight: 500;
+    align-items: center;
+    justify-items: center;
+    color: #363300;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    
+    .input{
+        padding: 10px;
+        border-radius: 10px;
+        width: 50%;
+        background: #f3ec78;
+    }
+}
+
+.sign-up-container {
+    display: flex;
+    font-size: 1rem;
+    align-items: center;
+    padding-top: 35px;
+    justify-content: center;
+    gap: 0.25rem; /* equivalent to gap-1 */
+    p{
+        margin: 0px;
+    }
+  }
+  
+  .sign-up-link {
+    color: #0284c7; /* equivalent to text-sky-700 */
+    text-decoration: none;
+  }
+  
+  .sign-up-link:hover {
+    text-decoration: underline; /* Optional: adds an underline on hover */
+  }
+
+  .submit-button {
+    background-color: #3498db; /* Blue background */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.Error {
+  color: red;
+  font-size: 15px;
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.submit-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}

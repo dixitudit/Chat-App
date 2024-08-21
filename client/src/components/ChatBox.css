@@ -1,0 +1,105 @@
+.ChatBox-container {
+    margin-right: 0.5rem;
+    /* border: 2px solid #000000; */
+    border-radius: 1rem;
+    /* width: 80%; */
+    display: grid;
+    grid-template-rows: 14vh 72vh 13vh;
+}
+
+.chat-header {
+    padding: 1rem 1rem 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.nameHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--textColor);
+}
+
+.chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.chat-body::-webkit-scrollbar {
+    display: none;
+}
+
+.message {
+  border: #358ff9 1px solid;
+  background: var(--buttonBg);
+  color: rgb(0, 0, 0);
+  padding: 0.7rem;
+  border-radius: 1rem 1rem 1rem 0;
+  max-width: 28rem;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.message>span:nth-child(2){
+    font-size: 0.7rem;
+    color: var(--textColor);
+    align-self: end;
+}
+
+.own {
+  align-self: flex-end;
+  border-radius: 1rem 1rem 0 1rem;
+  background: linear-gradient(98.63deg, #24e4f0 0%, #358ff9 100%);
+}
+
+
+
+.chat-sender {
+    background: linear-gradient(to right, #217bfe, #ea002f);
+    display: flex;
+    justify-content: space-between;
+    height: 3.5rem;
+    align-items: center;
+    padding: 0.3rem;
+    margin: 0 1rem 0.2rem 1rem;
+    border-radius: 1rem;
+    align-self: end;
+}
+.chat-sender>input{
+    height: 70%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    flex  :1 ;
+    font-size: 14px;
+    padding: 0px 15px 0px 15px;
+}
+
+.chat-sender>div:nth-of-type(1)
+{
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer ;
+}
+.chat-sender>div{
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 15px 0px 15px;
+}
+
+.sendbtn {
+    padding: 0.5rem;
+    margin: 20px;
+}
