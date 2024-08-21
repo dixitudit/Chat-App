@@ -1,8 +1,17 @@
 import { Server } from "socket.io";
 
+const allowedOrigins = ["http://localhost:3000", "http://localhost:5000"];
+
 const io = new Server(8800, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true); // Allow non-origin requests
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow requests from allowed origins
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
   },
 });
 
