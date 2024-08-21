@@ -3,7 +3,7 @@ import { Server } from "socket.io";
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5000",
-  "https://chat-app-2gnu.onrender.com:5000",
+  "https://chat-app-2gnu.onrender.com",
 ];
 
 const io = new Server(8800, {
