@@ -34,4 +34,21 @@ io.on("connection", (socket) => {
       io.to(user.socketId).emit("recieve-message", data);
     }
   });
+
+  // add chat to receiver if online
+  socket.on("add-chat", (receiverId) => {
+    console.log("add chat called" + receiverId);
+    const user = activeUsers.find((user) => user.userId === receiverId);
+    if (user) {
+      console.log("userOnline");
+      io.to(user.socketId).emit("add-chat");
+      io.emit("get-users", activeUsers);
+    }
+  });
+
+  socket.on("custom-disconnect", (userId) => {
+    activeUsers = activeUsers.filter((user) => user.userId !== userId);
+    // send all active users to all users
+    io.emit("get-users", activeUsers);
+  });
 });
