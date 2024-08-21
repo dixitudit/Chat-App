@@ -1,6 +1,7 @@
 import { Server } from "socket.io";
+import config from "../client/src/config";
 
-const allowedOrigins = ["http://localhost:3000", "http://localhost:5000"];
+const allowedOrigins = ["http://localhost:3000", `${config.API_URL}`];
 
 const io = new Server(8800, {
   cors: {
