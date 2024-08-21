@@ -65,7 +65,7 @@ const Chat = () => {
   }, [newChat]);
 
   useEffect(() => {
-    socket.current = io("http://localhost:8800");
+    socket.current = io(`${config.API_URL}:8800`);
     socket.current.emit("new-user-add", currentUser._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
